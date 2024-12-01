@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect('localhost' , 'root' , '' , 'contact_dbs') or die ('connection failed');
+$conn = mysqli_connect('localhost' , 'root' , '' , 'contact-data') or die ('connection failed');
 
 if(isset($_POST['submit'])){
 
@@ -9,24 +9,27 @@ if(isset($_POST['submit'])){
     $number = $_POST['number'];
     $date = $_POST['date'];
 
-
-
-    $insert = mysqli_query($conn, "INSERT INTO `contact_forms`(name, email, number, date)
+    $insert = mysqli_query($conn, "INSERT INTO `contact_forme`(name, email, number, date)
     VALUES('$name' , '$email' , '$number' , '$date')") or die ('query failed');
 
+
     if($insert){
-        $message[] = 'appointment made successfully';
-    
+        $message[] = 'appointment made successfully!';
+
+
     }else{
-        $message[] = 'appointment failed';
+
+            $message[] = 'appointment failed';
+
     }
-
-
-
 
 }
 
 ?>
+
+
+
+
 
 
 
@@ -323,14 +326,14 @@ if(isset($_POST['submit'])){
 
 <?php
         if(isset($message)){
-         foreach($message as $message)
+        
 
-           foreach($message as $message)
+           foreach($message as $message){
            echo '<p class="message">'.$message.'</p>';
         }
+    }
 ?>
 
-<p class="message">test message box</p>
 
 <span>Your name :</span>
     <input type="text" name="name" placeholder="enter your name" class="box">
